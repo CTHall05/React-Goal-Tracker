@@ -13,6 +13,8 @@ function App() {
   return (
     <div className="App">
       <h1>Goal Tracker</h1>
+      <GoalInput addGoal={addGoalHandler} />
+      <GoalList goals={goals} />
     </div>
   );
 }

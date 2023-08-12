@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function GoalInput({ addGoal }) {
+function GoalInput({ onAddGoal }) {
   const [enteredGoal, setEnteredGoal] = useState('');
 
   const goalInputChangeHandler = (event) => {
@@ -10,19 +10,22 @@ function GoalInput({ addGoal }) {
   const submitHandler = (event) => {
     event.preventDefault();
     if (enteredGoal.trim() !== '') {
-      addGoal.onAddGoal(enteredGoal);
+      onAddGoal(enteredGoal);
       setEnteredGoal('');
     }
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className="goal-form">
       <input
         type="text"
         value={enteredGoal}
         onChange={goalInputChangeHandler}
+        className="goal-input"
       />
-      <button type="submit">Add Goal</button>
+      <button type="submit" className="button">
+        Add Goal
+      </button>
     </form>
   );
 }

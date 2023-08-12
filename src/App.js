@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import GoalInput from './GoalInput';
-import GoalList from './GoalList';
+import GoalInput from './Components/GoalInput';
+import GoalList from './Components/GoalList';
 import './App.css';
 
 function App() {
@@ -10,11 +10,15 @@ function App() {
     setGoals((prevGoals) => [...prevGoals, newGoal]);
   };
 
+  const removeGoal = (goalToRemove) => {
+    setGoals((prevGoals) => prevGoals.filter((goal) => goal !== goalToRemove));
+  };
+
   return (
-    <div className="App">
-      <h1>Goal Tracker</h1>
-      <GoalInput addGoal={addGoalHandler} />
-      <GoalList goals={goals} />
+    <div className="container">
+      <h1 className="header">React Goal Tracker</h1>
+      <GoalInput onAddGoal={addGoalHandler} />
+      <GoalList goals={goals} onRemoveGoal={removeGoal} />
     </div>
   );
 }
